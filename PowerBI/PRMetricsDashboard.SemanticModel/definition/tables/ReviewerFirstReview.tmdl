@@ -1,0 +1,74 @@
+table ReviewerFirstReview
+	lineageTag: 50a7e8b2-4985-432d-ad15-6f68c6e3fc19
+
+	column pr_id
+		formatString: 0
+		lineageTag: 963bb571-2554-44d3-b062-d8bd681c1f56
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: reviews[pr_id]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'First Review Time'
+		formatString: General Date
+		lineageTag: 6d8a0611-6944-4125-826d-3720e5fc99c0
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [First Review Time]
+
+		variation Variation
+			isDefault
+			relationship: ae41f73e-d538-4ec4-ad5f-8671db02a9c8
+			defaultHierarchy: LocalDateTable_12737f4e-c1e2-4dcb-a256-51ca6c693f00.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Time to First Review (hrs)' =
+			
+			DATEDIFF(
+			    RELATED(prs[created_at]),
+			    ReviewerFirstReview[First Review Time],
+			    HOUR
+			)
+		formatString: 0
+		lineageTag: 91bde297-c06d-480f-9db4-3a50dd89ef94
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column reviewer_login
+		lineageTag: 52ffc69b-305a-4269-9e24-1d7c6089fa11
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: reviews[reviewer_login]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'PR Created At' =
+			
+			RELATED(prs[created_at])
+		formatString: General Date
+		lineageTag: 7b160af0-6fc8-4b51-a867-f02a4fd41d10
+		summarizeBy: none
+
+		variation Variation
+			isDefault
+			relationship: 05c213c2-5d3b-4b64-95bf-e861198c17f5
+			defaultHierarchy: LocalDateTable_c723175d-7b94-42eb-9502-e4bd7e42393b.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	partition ReviewerFirstReview = calculated
+		mode: import
+		source =
+				
+				SUMMARIZE(
+				    reviews,
+				    reviews[pr_id],
+				    reviews[reviewer_login],
+				    "First Review Time", MIN(reviews[submitted_at])
+				)
+
+	annotation PBI_Id = c687a694038c434894df11a151bb3608
+

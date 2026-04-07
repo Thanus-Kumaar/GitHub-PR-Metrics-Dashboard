@@ -1,0 +1,33 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "name": "15197e69f9f3d7f7e061",
+  "position": {
+    "x": 995.71428571428578,
+    "y": 245.71428571428572,
+    "z": 9000,
+    "height": 64.285714285714292,
+    "width": 231.42857142857144,
+    "tabOrder": 5009
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "Note: If Median and Average are very different, few people have too many commits in their PRs"
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

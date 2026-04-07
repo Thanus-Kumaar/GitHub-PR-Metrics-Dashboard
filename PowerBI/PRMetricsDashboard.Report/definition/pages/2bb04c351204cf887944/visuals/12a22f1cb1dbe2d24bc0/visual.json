@@ -1,0 +1,39 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "name": "12a22f1cb1dbe2d24bc0",
+  "position": {
+    "x": 2.8571428571428896,
+    "y": 70,
+    "z": 6000,
+    "height": 40,
+    "width": 452.85714285714289,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "Time to first review + Review turnaround time",
+                    "textStyle": {
+                      "fontFamily": "Arial",
+                      "fontSize": "16pt"
+                    }
+                  }
+                ],
+                "horizontalTextAlignment": "center"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "parentGroupName": "e2953b8b0b25db0caecb"
+}

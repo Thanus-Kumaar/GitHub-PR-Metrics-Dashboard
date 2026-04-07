@@ -1,0 +1,512 @@
+table prs
+	lineageTag: 2b368437-c3ff-43e4-996c-024e3a0f0c6d
+
+	measure 'Third Quater of PR size' = PERCENTILE.INC(prs[pr_size], 0.75)
+		lineageTag: 7fa71b12-15a4-402a-9120-a61b1cc33e77
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column pr_id
+		dataType: string
+		lineageTag: 87c13de1-bb7d-4497-91d8-f2ae4d25da80
+		summarizeBy: none
+		sourceColumn: pr_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column repo_name
+		dataType: string
+		lineageTag: 23415722-1e8b-4bb4-815a-e673a48aac2f
+		summarizeBy: none
+		sourceColumn: repo_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column pr_number
+		dataType: int64
+		formatString: 0
+		lineageTag: d59f9095-7811-4eb9-b1d2-2dc44d11dde9
+		summarizeBy: none
+		sourceColumn: pr_number
+
+		annotation SummarizationSetBy = Automatic
+
+	column pr_title
+		dataType: string
+		lineageTag: 584e1b33-5e2b-4862-8753-3ac0d967f1d3
+		summarizeBy: none
+		sourceColumn: pr_title
+
+		annotation SummarizationSetBy = Automatic
+
+	column author_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 5c615bc4-a695-4c15-851e-b46d4383297e
+		summarizeBy: none
+		sourceColumn: author_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column state
+		dataType: string
+		lineageTag: 69918bbd-254c-49ec-8861-a66ceb67d9b6
+		summarizeBy: none
+		sourceColumn: state
+
+		annotation SummarizationSetBy = Automatic
+
+	column is_merged
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 76672348-b1da-440f-b6eb-2b5a2eec42d0
+		summarizeBy: none
+		sourceColumn: is_merged
+
+		annotation SummarizationSetBy = Automatic
+
+	column is_draft
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 2edd29b4-5364-4883-9c64-e7e7b3c1e8d1
+		summarizeBy: none
+		sourceColumn: is_draft
+
+		annotation SummarizationSetBy = Automatic
+
+	column created_at
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 4cf51f99-17b8-4cf5-9b51-d73d63865d60
+		summarizeBy: none
+		sourceColumn: created_at
+
+		variation Variation
+			isDefault
+			relationship: 1380cdda-8e76-4d54-a168-f23e7998e747
+			defaultHierarchy: LocalDateTable_f0b4d813-b138-4de0-b617-fa1443e86c20.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column updated_at
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 9446fce0-102e-4b55-8b13-dc6d3bc82cf8
+		summarizeBy: none
+		sourceColumn: updated_at
+
+		variation Variation
+			isDefault
+			relationship: 47ffc188-419b-488a-a047-642bbe098a8b
+			defaultHierarchy: LocalDateTable_31c4fa56-0ed0-4caf-baa2-2484ecdd4737.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column closed_at
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 9f15e9a6-de2c-43ff-8561-15738e34b068
+		summarizeBy: none
+		sourceColumn: closed_at
+
+		variation Variation
+			isDefault
+			relationship: 15c8ac70-0650-4ebf-a97a-042531e6a37d
+			defaultHierarchy: LocalDateTable_2aeef260-188a-43ae-823b-314769a085a0.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column merged_at
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 903b7ca4-bfae-460f-bdb6-4b11ff509f74
+		summarizeBy: none
+		sourceColumn: merged_at
+
+		variation Variation
+			isDefault
+			relationship: 01aac682-c094-4eeb-af1e-6f7e08f5f0bb
+			defaultHierarchy: LocalDateTable_ab02d0ce-f5c4-44d7-91e3-c9c73d0489e2.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column merged_by_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 8b1863aa-1754-43d2-8db4-96bcbd0fa238
+		summarizeBy: sum
+		sourceColumn: merged_by_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column additions
+		dataType: int64
+		formatString: 0
+		lineageTag: 2dfd230e-b028-48d9-97e7-e1f51094089d
+		summarizeBy: sum
+		sourceColumn: additions
+
+		annotation SummarizationSetBy = Automatic
+
+	column deletions
+		dataType: int64
+		formatString: 0
+		lineageTag: 64c2b403-92f7-4149-a1dc-c7d27a1c73a5
+		summarizeBy: sum
+		sourceColumn: deletions
+
+		annotation SummarizationSetBy = Automatic
+
+	column pr_size
+		dataType: int64
+		formatString: 0
+		lineageTag: 1c9979f1-da4c-4af1-a43c-57f36ad57d56
+		summarizeBy: sum
+		sourceColumn: pr_size
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation __PBI_SemanticLinks = [{"LinkTarget":{"TableName":"prs","TableItemName":"pr_size (bins)","ObjectType":4},"LinkType":"UsedInGroup"}]
+
+	column changed_files
+		dataType: int64
+		formatString: 0
+		lineageTag: 063c1469-c761-49cb-bab0-46880d4cfaeb
+		summarizeBy: sum
+		sourceColumn: changed_files
+
+		annotation SummarizationSetBy = Automatic
+
+	column commits_count
+		dataType: int64
+		formatString: 0
+		lineageTag: 20fa1ed6-5a03-49ad-a2ff-393551ae3c20
+		summarizeBy: sum
+		sourceColumn: commits_count
+
+		annotation SummarizationSetBy = Automatic
+
+	column comments_count
+		dataType: int64
+		formatString: 0
+		lineageTag: 032c9d9f-2e7d-43d1-80c6-b4ca236e628d
+		summarizeBy: sum
+		sourceColumn: comments_count
+
+		annotation SummarizationSetBy = Automatic
+
+	column review_comments_count
+		dataType: int64
+		formatString: 0
+		lineageTag: 32309f32-491e-42fa-bcbc-0f77ab45a382
+		summarizeBy: sum
+		sourceColumn: review_comments_count
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation __PBI_SemanticLinks = [{"LinkTarget":{"TableName":"prs","TableItemName":"review_comments_count (bins)","ObjectType":4},"LinkType":"UsedInGroup"}]
+
+	column total_comments
+		dataType: int64
+		formatString: 0
+		lineageTag: 92ecc545-70a7-4c24-b914-e146569eb3b3
+		summarizeBy: sum
+		sourceColumn: total_comments
+
+		annotation SummarizationSetBy = Automatic
+
+	column cycle_time_hours
+		dataType: double
+		lineageTag: 42fc1239-b8c6-4da4-b9c8-e7d52e6e899f
+		summarizeBy: sum
+		sourceColumn: cycle_time_hours
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column days_since_created
+		dataType: int64
+		formatString: 0
+		lineageTag: 09378dc7-19a4-4450-800a-740dce23cd30
+		summarizeBy: sum
+		sourceColumn: days_since_created
+
+		annotation SummarizationSetBy = Automatic
+
+	column days_since_updated
+		dataType: int64
+		formatString: 0
+		lineageTag: bfdfa40a-1102-4563-97b8-7e7bae9b0829
+		summarizeBy: sum
+		sourceColumn: days_since_updated
+
+		annotation SummarizationSetBy = Automatic
+
+	column first_review_at
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: aceae856-22bb-4e49-a0f1-3052d5646566
+		summarizeBy: none
+		sourceColumn: first_review_at
+
+		variation Variation
+			isDefault
+			relationship: ee539203-21ad-4a59-840b-3e6b25391438
+			defaultHierarchy: LocalDateTable_19af3f05-681f-48ec-8e1f-6d5bf7c59b92.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column last_review_at
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 8d16caed-2b3a-4ae2-80fa-0b3e3d119f41
+		summarizeBy: none
+		sourceColumn: last_review_at
+
+		variation Variation
+			isDefault
+			relationship: 420b1e44-434c-4722-9af3-51c088282d18
+			defaultHierarchy: LocalDateTable_00ff7cd5-68d5-45a8-b0b0-872c02a0f2ea.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column time_to_first_review_hours
+		dataType: double
+		lineageTag: 95362fc5-4fce-4ca1-9a4e-e62ac5ac5894
+		summarizeBy: sum
+		sourceColumn: time_to_first_review_hours
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column review_turnaround_time_hours
+		dataType: double
+		lineageTag: 72a3d511-3c96-400e-8315-481953284bae
+		summarizeBy: sum
+		sourceColumn: review_turnaround_time_hours
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column approvals_count
+		dataType: int64
+		formatString: 0
+		lineageTag: bbce893e-64b1-4580-b7bc-6d8b5ec0ce86
+		summarizeBy: sum
+		sourceColumn: approvals_count
+
+		annotation SummarizationSetBy = Automatic
+
+	column changes_requested_count
+		dataType: int64
+		formatString: 0
+		lineageTag: 41488c43-1a26-4740-97a6-94a2dd761253
+		summarizeBy: sum
+		sourceColumn: changes_requested_count
+
+		annotation SummarizationSetBy = Automatic
+
+	column commented_count
+		dataType: int64
+		formatString: 0
+		lineageTag: fd7610f2-e03b-4902-9783-15e83d99bb06
+		summarizeBy: sum
+		sourceColumn: commented_count
+
+		annotation SummarizationSetBy = Automatic
+
+	column has_approval
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: b6376a60-cfc2-4998-bcf4-bf93753340bd
+		summarizeBy: none
+		sourceColumn: has_approval
+
+		annotation SummarizationSetBy = Automatic
+
+	column first_review_submitted_at
+		type: calculated
+		dataType: dateTime
+		lineageTag: 460d6d59-c502-4c68-892b-7537d6415a69
+		summarizeBy: none
+
+		variation Variation
+			isDefault
+			relationship: 92fc0152-b29b-4895-8b72-d36e4f56e4d1
+			defaultHierarchy: LocalDateTable_4258c613-c93f-449d-885c-02076116faa9.'Date Hierarchy'
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Created Day of Week' = FORMAT(prs[created_at], "dddd")
+		lineageTag: ec17a7cc-bdeb-4765-ba47-527717e23d0c
+		summarizeBy: none
+		sortByColumn: 'Created Day Number'
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Created Day Number' = WEEKDAY(prs[created_at], 2)
+		formatString: 0
+		lineageTag: 9fc96bbf-0458-49a6-98f7-e7dba211951d
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'PR Size Bucket' = SWITCH(TRUE(),prs[pr_size] < 200, "Small", prs[pr_size] < 500, "Medium", "Large")
+		lineageTag: 60adf102-1486-4746-af7f-84ca3384e690
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Is Stalled' = ISBLANK(prs[closed_at]) && ISBLANK(prs[merged_at]) && (TODAY() - prs[created_at].[Date]) > 14
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 0c0064ef-a983-449e-8826-6c0006c5babc
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column log_pr_size
+		dataType: string
+		lineageTag: 9a473193-6280-4369-9e0d-5dec89bb031a
+		summarizeBy: none
+		sourceColumn: log_pr_size
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'pr_size (bins)' =
+			IF(
+				ISBLANK('prs'[pr_size]),
+				BLANK(),
+				INT('prs'[pr_size] / 17839) * 17839
+			)
+		formatString: 0
+		lineageTag: f75bc9e1-bcf5-4875-905d-c03663fae458
+		summarizeBy: none
+
+		extendedProperty GroupingMetadata =
+				{
+				  "version": 0,
+				  "groupedColumns": [
+				    {
+				      "Column": {
+				        "Expression": {
+				          "SourceRef": {
+				            "Entity": "prs"
+				          }
+				        },
+				        "Property": "pr_size"
+				      }
+				    }
+				  ],
+				  "binningMetadata": {
+				    "binSize": {
+				      "value": 17839.0,
+				      "unit": 0
+				    }
+				  }
+				}
+
+		annotation GroupingDesignState = {"Version":0,"Sources":[{"Name":"p","Entity":"prs"}],"GroupedColumns":[{"Column":{"Expression":{"SourceRef":{"Source":"p"}},"Property":"pr_size"}}],"BinItem":{"Expression":{"Floor":{"Expression":{"Column":{"Expression":{"SourceRef":{"Source":"p"}},"Property":"pr_size"}},"Size":17839.0}}}}
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'review_comments_count (bins)' =
+			IF(
+				ISBLANK('prs'[review_comments_count]),
+				BLANK(),
+				INT('prs'[review_comments_count] / 2) * 2
+			)
+		formatString: 0
+		lineageTag: 15f329a3-44ee-4763-b52b-4a1690da1990
+		summarizeBy: none
+
+		extendedProperty GroupingMetadata =
+				{
+				  "version": 0,
+				  "groupedColumns": [
+				    {
+				      "Column": {
+				        "Expression": {
+				          "SourceRef": {
+				            "Entity": "prs"
+				          }
+				        },
+				        "Property": "review_comments_count"
+				      }
+				    }
+				  ],
+				  "binningMetadata": {
+				    "binSize": {
+				      "value": 2.0,
+				      "unit": 0
+				    }
+				  }
+				}
+
+		annotation GroupingDesignState = {"Version":0,"Sources":[{"Name":"p","Entity":"prs"}],"GroupedColumns":[{"Column":{"Expression":{"SourceRef":{"Source":"p"}},"Property":"review_comments_count"}}],"BinItem":{"Expression":{"Floor":{"Expression":{"Column":{"Expression":{"SourceRef":{"Source":"p"}},"Property":"review_comments_count"}},"Size":2.0}}}}
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'PR Size Bucket Expanded' =
+			
+			SWITCH(
+			    TRUE(),
+			    prs[pr_size] = 0, "0",
+			    prs[pr_size] <= 50, "1–50",
+			    prs[pr_size] <= 200, "51–200",
+			    prs[pr_size] <= 500, "201–500",
+			    prs[pr_size] <= 1000, "501–1k",
+			    prs[pr_size] <= 5000, "1k–5k",
+			    prs[pr_size] <= 10000, "5k–10k",
+			    prs[pr_size] <= 50000, "10k–50k",
+			    "50k+"
+			)
+		lineageTag: 07428a7f-a197-400d-aeb3-959a9145af4c
+		summarizeBy: none
+		sortByColumn: 'PR Size Bucket Sort'
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'PR Size Bucket Sort' =
+			
+			SWITCH(
+			    TRUE(),
+			    prs[pr_size] = 0, 1,
+			    prs[pr_size] <= 50, 2,
+			    prs[pr_size] <= 200, 3,
+			    prs[pr_size] <= 500, 4,
+			    prs[pr_size] <= 1000, 5,
+			    prs[pr_size] <= 5000, 6,
+			    prs[pr_size] <= 10000, 7,
+			    prs[pr_size] <= 50000, 8,
+			    9
+			)
+		formatString: 0
+		lineageTag: 1ce6d014-975f-47b5-b473-302b162fbb42
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	partition prs = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("D:\Project Works\Internship\Aven\prs.csv"),[Delimiter=",", Columns=32, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"pr_id", type text}, {"repo_name", type text}, {"pr_number", Int64.Type}, {"pr_title", type text}, {"author_id", Int64.Type}, {"state", type text}, {"is_merged", type logical}, {"is_draft", type logical}, {"created_at", type datetime}, {"updated_at", type datetime}, {"closed_at", type datetime}, {"merged_at", type datetime}, {"merged_by_id", Int64.Type}, {"additions", Int64.Type}, {"deletions", Int64.Type}, {"pr_size", Int64.Type}, {"changed_files", Int64.Type}, {"commits_count", Int64.Type}, {"comments_count", Int64.Type}, {"review_comments_count", Int64.Type}, {"total_comments", Int64.Type}, {"cycle_time_hours", type number}, {"days_since_created", Int64.Type}, {"days_since_updated", Int64.Type}, {"first_review_at", type datetime}, {"last_review_at", type datetime}, {"time_to_first_review_hours", type number}, {"review_turnaround_time_hours", type number}, {"approvals_count", Int64.Type}, {"changes_requested_count", Int64.Type}, {"commented_count", Int64.Type}, {"has_approval", type logical}}),
+				    #"Added Custom" = Table.AddColumn(#"Changed Type", "log_pr_size", each Number.Log([pr_size] + 1))
+				in
+				    #"Added Custom"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

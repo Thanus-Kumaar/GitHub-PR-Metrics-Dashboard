@@ -1,0 +1,62 @@
+relationship 1380cdda-8e76-4d54-a168-f23e7998e747
+	joinOnDateBehavior: datePartOnly
+	fromColumn: prs.created_at
+	toColumn: LocalDateTable_f0b4d813-b138-4de0-b617-fa1443e86c20.Date
+
+relationship 47ffc188-419b-488a-a047-642bbe098a8b
+	joinOnDateBehavior: datePartOnly
+	fromColumn: prs.updated_at
+	toColumn: LocalDateTable_31c4fa56-0ed0-4caf-baa2-2484ecdd4737.Date
+
+relationship 15c8ac70-0650-4ebf-a97a-042531e6a37d
+	joinOnDateBehavior: datePartOnly
+	fromColumn: prs.closed_at
+	toColumn: LocalDateTable_2aeef260-188a-43ae-823b-314769a085a0.Date
+
+relationship 01aac682-c094-4eeb-af1e-6f7e08f5f0bb
+	joinOnDateBehavior: datePartOnly
+	fromColumn: prs.merged_at
+	toColumn: LocalDateTable_ab02d0ce-f5c4-44d7-91e3-c9c73d0489e2.Date
+
+relationship ee539203-21ad-4a59-840b-3e6b25391438
+	joinOnDateBehavior: datePartOnly
+	fromColumn: prs.first_review_at
+	toColumn: LocalDateTable_19af3f05-681f-48ec-8e1f-6d5bf7c59b92.Date
+
+relationship 420b1e44-434c-4722-9af3-51c088282d18
+	joinOnDateBehavior: datePartOnly
+	fromColumn: prs.last_review_at
+	toColumn: LocalDateTable_00ff7cd5-68d5-45a8-b0b0-872c02a0f2ea.Date
+
+relationship a290bf5a-b422-4006-b732-33ffa20ff1b0
+	joinOnDateBehavior: datePartOnly
+	fromColumn: reviews.submitted_at
+	toColumn: LocalDateTable_bd40997d-e7e7-48db-94fd-109c8afb6df7.Date
+
+relationship b392df90-7706-9459-cac5-bac9bb0170f6
+	fromColumn: prs.author_id
+	toColumn: users.user_id
+
+relationship 855c5c06-be04-c26a-3cc4-dd2603907537
+	fromColumn: reviews.pr_id
+	toColumn: prs.pr_number
+
+relationship 92fc0152-b29b-4895-8b72-d36e4f56e4d1
+	joinOnDateBehavior: datePartOnly
+	fromColumn: prs.first_review_submitted_at
+	toColumn: LocalDateTable_4258c613-c93f-449d-885c-02076116faa9.Date
+
+relationship ae41f73e-d538-4ec4-ad5f-8671db02a9c8
+	joinOnDateBehavior: datePartOnly
+	fromColumn: ReviewerFirstReview.'First Review Time'
+	toColumn: LocalDateTable_12737f4e-c1e2-4dcb-a256-51ca6c693f00.Date
+
+relationship bca4716d-6a9c-ea0e-ef82-f6b0a6a3017e
+	fromColumn: ReviewerFirstReview.pr_id
+	toColumn: prs.pr_number
+
+relationship 05c213c2-5d3b-4b64-95bf-e861198c17f5
+	joinOnDateBehavior: datePartOnly
+	fromColumn: ReviewerFirstReview.'PR Created At'
+	toColumn: LocalDateTable_c723175d-7b94-42eb-9502-e4bd7e42393b.Date
+

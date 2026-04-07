@@ -1,0 +1,184 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "name": "01e52c412dcdc7e00721",
+  "position": {
+    "x": 15.714285714285715,
+    "y": 250,
+    "z": 0,
+    "height": 120,
+    "width": 950,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "cardVisual",
+    "query": {
+      "queryState": {
+        "Data": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "prs"
+                        }
+                      },
+                      "Property": "pr_size"
+                    }
+                  },
+                  "Function": 6
+                }
+              },
+              "queryRef": "Median(prs.pr_size)",
+              "nativeQueryRef": "Median of PR Size",
+              "displayName": "Median of PR Size"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "prs"
+                        }
+                      },
+                      "Property": "additions"
+                    }
+                  },
+                  "Function": 6
+                }
+              },
+              "queryRef": "Median(prs.additions)",
+              "nativeQueryRef": "Median of Additions",
+              "displayName": "Median of Additions"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "prs"
+                        }
+                      },
+                      "Property": "deletions"
+                    }
+                  },
+                  "Function": 6
+                }
+              },
+              "queryRef": "Median(prs.deletions)",
+              "nativeQueryRef": "Median of Deletions",
+              "displayName": "Median of Deletions"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "prs"
+                        }
+                      },
+                      "Property": "changed_files"
+                    }
+                  },
+                  "Function": 6
+                }
+              },
+              "queryRef": "Sum(prs.changed_files)",
+              "nativeQueryRef": "Median of Files Changed",
+              "displayName": "Median of Files Changed"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Aggregation": {
+                "Expression": {
+                  "Column": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "prs"
+                      }
+                    },
+                    "Property": "pr_size"
+                  }
+                },
+                "Function": 6
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "visualContainerObjects": {
+      "dropShadow": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "preset": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Custom'"
+                }
+              }
+            },
+            "angle": {
+              "expr": {
+                "Literal": {
+                  "Value": "90L"
+                }
+              }
+            },
+            "shadowDistance": {
+              "expr": {
+                "Literal": {
+                  "Value": "5D"
+                }
+              }
+            },
+            "shadowBlur": {
+              "expr": {
+                "Literal": {
+                  "Value": "10L"
+                }
+              }
+            },
+            "shadowSpread": {
+              "expr": {
+                "Literal": {
+                  "Value": "3L"
+                }
+              }
+            },
+            "transparency": {
+              "expr": {
+                "Literal": {
+                  "Value": "90D"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

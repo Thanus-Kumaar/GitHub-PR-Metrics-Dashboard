@@ -1,0 +1,39 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "name": "5ad2b7f607e0ad8377c4",
+  "position": {
+    "x": 155.71428571428578,
+    "y": 8.57142857142857,
+    "z": 10000,
+    "height": 40,
+    "width": 141.42857142857144,
+    "tabOrder": 1000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "Cycle Time",
+                    "textStyle": {
+                      "fontFamily": "Arial",
+                      "fontSize": "16pt"
+                    }
+                  }
+                ],
+                "horizontalTextAlignment": "center"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "parentGroupName": "e2953b8b0b25db0caecb"
+}

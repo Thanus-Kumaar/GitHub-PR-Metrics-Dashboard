@@ -1,0 +1,33 @@
+model Model
+	culture: en-IN
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: en-IN
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBI_QueryOrder = ["prs","reviews","users"]
+
+annotation PBI_ProTooling = ["DevMode"]
+
+ref table prs
+ref table DateTableTemplate_dd9f2581-44ab-4d53-8b8a-cbc2e228c60f
+ref table LocalDateTable_f0b4d813-b138-4de0-b617-fa1443e86c20
+ref table LocalDateTable_31c4fa56-0ed0-4caf-baa2-2484ecdd4737
+ref table LocalDateTable_2aeef260-188a-43ae-823b-314769a085a0
+ref table LocalDateTable_ab02d0ce-f5c4-44d7-91e3-c9c73d0489e2
+ref table LocalDateTable_19af3f05-681f-48ec-8e1f-6d5bf7c59b92
+ref table LocalDateTable_00ff7cd5-68d5-45a8-b0b0-872c02a0f2ea
+ref table reviews
+ref table LocalDateTable_bd40997d-e7e7-48db-94fd-109c8afb6df7
+ref table users
+ref table LocalDateTable_4258c613-c93f-449d-885c-02076116faa9
+ref table 'PR size related fields'
+ref table ReviewerFirstReview
+ref table LocalDateTable_12737f4e-c1e2-4dcb-a256-51ca6c693f00
+ref table LocalDateTable_c723175d-7b94-42eb-9502-e4bd7e42393b
+
+ref cultureInfo en-IN
+

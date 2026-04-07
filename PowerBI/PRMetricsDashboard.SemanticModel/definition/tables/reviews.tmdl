@@ -1,0 +1,74 @@
+table reviews
+	lineageTag: 93118b71-a67a-4e5a-896d-b66aefe2b977
+
+	column review_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 5e919b0c-fa86-4cf0-ba6b-78d172990fca
+		summarizeBy: sum
+		sourceColumn: review_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column pr_id
+		dataType: int64
+		formatString: 0
+		lineageTag: e58c87b6-2308-44fe-89a6-969b62938b5c
+		summarizeBy: none
+		sourceColumn: pr_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column reviewer_id
+		dataType: int64
+		formatString: 0
+		lineageTag: bbfe453b-1f59-4ca9-8b0b-41b21c43bced
+		summarizeBy: sum
+		sourceColumn: reviewer_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column state
+		dataType: string
+		lineageTag: 05541d94-c089-4215-9a9f-e929e1eafc80
+		summarizeBy: none
+		sourceColumn: state
+
+		annotation SummarizationSetBy = Automatic
+
+	column submitted_at
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 02898d10-0a1a-4380-92b2-cffe1ef56878
+		summarizeBy: none
+		sourceColumn: submitted_at
+
+		variation Variation
+			isDefault
+			relationship: a290bf5a-b422-4006-b732-33ffa20ff1b0
+			defaultHierarchy: LocalDateTable_bd40997d-e7e7-48db-94fd-109c8afb6df7.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column reviewer_login
+		dataType: string
+		lineageTag: 2682cdb1-1521-4060-90a8-8854f6a2d054
+		summarizeBy: none
+		sourceColumn: reviewer_login
+
+		annotation SummarizationSetBy = Automatic
+
+	partition reviews = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("D:\Project Works\Internship\Aven\reviews.csv"),[Delimiter=",", Columns=6, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"review_id", Int64.Type}, {"pr_id", Int64.Type}, {"reviewer_id", Int64.Type}, {"state", type text}, {"submitted_at", type datetime}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

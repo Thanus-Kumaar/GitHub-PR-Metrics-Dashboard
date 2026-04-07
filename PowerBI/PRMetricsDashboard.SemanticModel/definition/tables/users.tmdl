@@ -1,0 +1,50 @@
+table users
+	lineageTag: a5d4c877-a7fb-40e5-ad4f-1dabc6c1d230
+
+	column user_id
+		dataType: int64
+		formatString: 0
+		lineageTag: c0de67b8-0554-4143-ac2d-a8ffe19c2b68
+		summarizeBy: none
+		sourceColumn: user_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column user_login
+		dataType: string
+		lineageTag: c3458228-d322-43a8-8ec3-1d0a777cc8c5
+		summarizeBy: none
+		sourceColumn: user_login
+
+		annotation SummarizationSetBy = Automatic
+
+	column user_type
+		dataType: string
+		lineageTag: 9097f571-016b-40cd-97ae-c481809ec136
+		summarizeBy: none
+		sourceColumn: user_type
+
+		annotation SummarizationSetBy = Automatic
+
+	column avatar_url
+		dataType: string
+		lineageTag: 4ea54785-9eb0-48ac-b7a8-f82649904867
+		summarizeBy: none
+		sourceColumn: avatar_url
+
+		annotation SummarizationSetBy = Automatic
+
+	partition users = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("D:\Project Works\Internship\Aven\users.csv"),[Delimiter=",", Columns=4, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"user_id", Int64.Type}, {"user_login", type text}, {"user_type", type text}, {"avatar_url", type text}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

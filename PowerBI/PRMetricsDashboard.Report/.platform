@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "PRMetricsDashboard"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "121d0774-f8a2-48b8-ab1d-6f38bcb2ce73"
+  }
+}

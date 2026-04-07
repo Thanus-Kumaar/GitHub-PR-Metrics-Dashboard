@@ -1,0 +1,125 @@
+table 'PR size related fields'
+	lineageTag: 2eba6107-9acb-4f44-af00-ba9f73fae807
+
+	measure 'Merged PRs' = CALCULATE(COUNT(prs[pr_id]), NOT(ISBLANK(prs[merged_at])))
+		formatString: 0
+		lineageTag: 5351f456-60f8-42c1-9198-06f717d4790a
+
+	measure 'Merge Rate %' = DIVIDE([Merged PRs], DISTINCTCOUNT(prs[pr_number]))
+		lineageTag: 10bab1b2-e4fd-4045-9781-a029b66f3059
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Active Contributors' = DISTINCTCOUNT(prs[author_id])
+		formatString: 0
+		lineageTag: 9c8e9006-7464-440a-a264-873f93f1af4a
+
+	measure 'Stalled Count' = CALCULATE(COUNTROWS(prs), prs[Is Stalled] = TRUE())
+		formatString: 0
+		lineageTag: 088ffb4c-87f3-484a-8e59-f00713fcf6ed
+
+	measure 'Open PR Count' =
+			
+			CALCULATE(
+			    COUNTROWS(prs),
+			    ISBLANK('prs'[merged_at]),
+			    ISBLANK('prs'[closed_at])
+			)
+		formatString: 0
+		lineageTag: ff886193-9593-41f9-9cbb-376a89e24549
+
+	measure 'PRs with Review' = CALCULATE(DISTINCTCOUNT(reviews[pr_id]))
+		formatString: 0
+		lineageTag: 6ae52583-c1f6-438f-802c-2765bac6fa27
+
+	measure 'Review Rate %' = DIVIDE([PRs with Review], DISTINCTCOUNT(prs[pr_number]))
+		lineageTag: c362b448-9806-408a-96d5-66d8b6d79a3b
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Approved PRs' =
+			
+			CALCULATE(
+			    DISTINCTCOUNT(reviews[pr_id]),
+			    reviews[state] = "APPROVED"
+			)
+		formatString: 0
+		lineageTag: eb4ad9c8-7558-41a1-b110-695262252cc4
+
+	measure 'Approval Rate %' =
+			
+			DIVIDE([Approved PRs], [PRs with Review])
+		lineageTag: f831e6ee-6a5f-4780-8e92-d2c770665304
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'PRs with Changes Requested' =
+			
+			CALCULATE(
+			    DISTINCTCOUNT(reviews[pr_id]),
+			    reviews[state] = "CHANGES_REQUESTED"
+			)
+		formatString: 0
+		lineageTag: ce2e4b62-9563-46dd-9ca3-c2aaf839118e
+
+	measure 'Change Request Rate %' =
+			
+			DIVIDE([PRs with Changes Requested], [PRs with Review])
+		lineageTag: a32d8dba-2981-41eb-b007-65619a42cc28
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Reviews per PR' =
+			
+			DIVIDE(COUNT(reviews[review_id]), DISTINCTCOUNT(prs[pr_number]))
+		lineageTag: 40ce9451-9ce9-4c69-940d-8ba42c65d2c8
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'PR size related fields'
+		lineageTag: 6498b297-2ce7-47ab-98b5-9131bdb17615
+		summarizeBy: none
+		sourceColumn: [Value1]
+		sortByColumn: 'PR size related fields Order'
+
+		relatedColumnDetails
+			groupByColumn: 'PR size related fields Fields'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'PR size related fields Fields'
+		isHidden
+		lineageTag: 81693e62-feae-42ca-9db4-e6dcd62b652a
+		summarizeBy: none
+		sourceColumn: [Value2]
+		sortByColumn: 'PR size related fields Order'
+
+		extendedProperty ParameterMetadata =
+				{
+				  "version": 3,
+				  "kind": 2
+				}
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'PR size related fields Order'
+		isHidden
+		formatString: 0
+		lineageTag: e1bc792e-e34a-482b-8d06-42b2f9181cf5
+		summarizeBy: sum
+		sourceColumn: [Value3]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'PR size related fields' = calculated
+		mode: import
+		source =
+				{
+				    ("pr_size", NAMEOF('prs'[pr_size]), 0),
+				    ("additions", NAMEOF('prs'[additions]), 1),
+				    ("changed_files", NAMEOF('prs'[changed_files]), 2),
+				    ("deletions", NAMEOF('prs'[deletions]), 3)
+				}
+
+	annotation PBI_Id = ac713e420e7647f383a227a27385ea55
+
