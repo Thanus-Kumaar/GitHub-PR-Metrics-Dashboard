@@ -230,7 +230,6 @@ def collect_data():
             "commented_count": commented_count,
             "has_approval": approvals_count > 0,
             }
-        print("###Appending PR data of PR #{} to list".format(pr_number))
         prs.append(pr_data)
 
     logger.info("[DEBUG] Data collection complete: %d users, %d PRs, %d reviews", len(users), len(prs), len(reviews))

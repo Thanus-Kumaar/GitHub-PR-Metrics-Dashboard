@@ -65,7 +65,7 @@
               },
               "queryRef": "prs.created_at.Variation.Date Hierarchy.Quarter",
               "nativeQueryRef": "created_at Quarter",
-              "active": true
+              "active": false
             },
             {
               "field": {
@@ -91,7 +91,7 @@
               },
               "queryRef": "prs.created_at.Variation.Date Hierarchy.Month",
               "nativeQueryRef": "created_at Month",
-              "active": false
+              "active": true
             }
           ]
         },
